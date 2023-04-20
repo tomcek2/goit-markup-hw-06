@@ -407,6 +407,13 @@ footer,
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  scale: 1;
+  opacity: 100%;
+  transition: scale 2s ease, opacity 2s ease;
+}
+.is-hidden .modal {
+  scale: 0;
+  opacity: 0;
 }
 .close-modal {
   position: absolute;
