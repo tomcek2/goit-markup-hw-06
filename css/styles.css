@@ -43,6 +43,7 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+/*-- COLOR PALETTE --*/
 .brand-main-color {
   color: var(--brand-primary-color);
 }
@@ -51,6 +52,9 @@ body {
 }
 .brand-tertiary-color {
   color: var(--brand-tertiary-color);
+}
+.background-light {
+  background-color: var(--light-background-color);
 }
 /*--- HEADER ---*/
 .header {
@@ -63,6 +67,25 @@ nav {
   display: inline-flex;
   align-items: center;
   padding: 24px 0px 25px 0px;
+}
+.nav-highlight {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.nav-highlight:hover,
+.nav-highlight:focus {
+  color: var(--brand-primary-color);
+  fill: var(--brand-primary-color);
+}
+.active-site::after {
+  content: '';
+  position: absolute;
+  width: 53px;
+  height: 4px;
+  background-color: var(--brand-primary-color);
+  left: 0;
+  bottom: -28px;
+  border-radius: 2px;
 }
 .logo {
   font-family: var(--brand-font);
@@ -142,15 +165,16 @@ nav {
   margin-bottom: 94px;
 }
 .paragraphs h3,
-.join {
+.join,
+.foto-caption {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.17;
-  margin-bottom: 10px;
 }
 .paragraphs p {
   color: var(--text-light-color);
   line-height: 1.71;
+  margin-top: 10px;
 }
 /*--- FOTO ---*/
 .section-title {
@@ -160,36 +184,47 @@ nav {
   text-align: center;
   margin-bottom: 50px;
 }
-.foto {
+.foto-list {
   display: flex;
   gap: 30px;
   justify-content: center;
 }
-.background-light {
-  background-color: var(--light-background-color);
+.foto {
+  position: relative;
+}
+.foto-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  background-color: rgba(47, 48, 58, 0.8);
+  text-align: center;
+  padding: 27px 0;
+  color: var(--brand-tertiary-color);
 }
 /*-- PEOPLE --*/
 .people {
   display: flex;
   gap: 30px;
+  justify-content: center;
 }
-.foto-caption {
+.people-caption {
   background-color: var(--brand-tertiary-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
-.foto-caption figcaption {
+.people-caption figcaption {
   font-size: 16px;
   line-height: 1.19;
   text-align: center;
   padding: 30px 0;
 }
-.foto-caption h3 {
+.people-caption h3 {
   font-weight: 500;
   margin-bottom: 10px;
 }
-.foto-caption p {
+.people-caption p {
   color: var(--text-light-color);
   margin-bottom: 16px;
 }
@@ -204,6 +239,8 @@ nav {
   padding: 12px;
   border-radius: 100%;
   fill: var(--icons-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icons-social:hover,
 .icons-social:focus {
@@ -221,6 +258,7 @@ nav {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: var(--icons-color);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icons-clients li:hover,
 .icons-clients li:focus {
@@ -244,6 +282,8 @@ nav {
   letter-spacing: 0.03em;
   border: none;
   background-color: var(--light-background-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .buttons-light:hover,
 .buttons-light:focus {
@@ -259,13 +299,38 @@ nav {
   margin-top: 50px;
   flex-wrap: wrap;
 }
-.examples figure {
+.card {
   border: 1px solid #eeeeee;
+  width: 370px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card:hover {
   border: 1px solid #eeeeee;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+.card-container {
+  position: relative;
+  overflow: hidden;
+}
+.card-text {
+  font-size: 18px;
+  line-height: 1.56;
+  font-weight: 400;
+  color: var(--brand-tertiary-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 49px 45px 49px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(101%);
+  transition: transform 0.3s ease-in;
+}
+.card:hover .card-text {
+  transform: translateY(0);
 }
 .description {
   padding: 20px 24px;
@@ -321,11 +386,7 @@ footer,
   background: rgba(255, 255, 255, 0.1);
   fill: var(--brand-tertiary-color);
 }
-.highlight:hover,
-.highlight:focus {
-  color: var(--brand-primary-color);
-  fill: var(--brand-primary-color);
-}
+
 /*--- MODAL ---*/
 .backdrop {
   position: fixed;
