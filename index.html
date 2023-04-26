@@ -336,6 +336,17 @@
             </li>
           </ul>
         </div>
+        <!-- NEWSLETTER-->
+        <form>
+          <label class="join">Zapisz się do newslettera</label>
+          <input name="newsletter-email" type="email" placeholder="E-mail" />
+          <button class="button-newsletter" type="submit">
+            Zapisz się
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#icon-send"></use>
+            </svg>
+          </button>
+        </form>
       </div>
     </footer>
     <!-- OKNO MODALNE-->
@@ -346,6 +357,20 @@
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
         </button>
+        <h3>Zostaw swoje dane w formularzu poniżej</h3>
+        <form>
+          <label>Imie <input name="name" type="text" required /></label>
+          <label>Telefon <input name="phone-number" type="tel" required /></label>
+          <label>Email <input name="e-mail" type="email" required /></label>
+          <label
+            >Komentarz <textarea name="comment" rows="5" placeholder="Wprowadź tekst"></textarea>
+          </label>
+          <label>
+            <input type="checkbox" name="agree" value="agree" />
+            Oświadczam iż akceptuję <span>Regulamin</span> i <span>Politykę Prywatności</span>.
+          </label>
+          <button type="submit">Wyślij</button>
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>

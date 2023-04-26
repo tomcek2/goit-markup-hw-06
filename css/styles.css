@@ -390,10 +390,15 @@ footer,
 .join {
   color: var(--brand-tertiary-color);
   margin-bottom: 20px;
+  display: block;
 }
 .icons-dark {
   background: rgba(255, 255, 255, 0.1);
   fill: var(--brand-tertiary-color);
+}
+.button-newsletter {
+  fill: red;
+  background-color: #2196f3;
 }
 
 /*--- MODAL ---*/
